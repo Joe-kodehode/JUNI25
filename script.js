@@ -29,7 +29,7 @@ console.log(15 != "15");
 console.log(15 !== "15"); // Strict not equal (!==) operator
 
 // --------------------------------------
-// Section 2: Conditionals with if, if...else, if...else if...else
+// Section 3: Conditionals with if, if...else, if...else if...else
 // --------------------------------------
 
 // Basic "if statement"
@@ -47,7 +47,7 @@ if (temperature >= 20) {
 }
 
 // --------------------------------------
-// Section 3: Logical Operators: AND (&&) and OR (||)
+// Section 4: Logical Operators: AND (&&) and OR (||)
 // --------------------------------------
 
 // AND (&&) requires both conditions to be true.
@@ -81,7 +81,7 @@ if (day === "Saturday" || day === "Sunday") {
 }
 
 // --------------------------------------
-// Section 4: Ternary Operator
+// Section 5: Ternary Operator
 // --------------------------------------
 
 // DRY - Don't repeat yourself
@@ -99,7 +99,7 @@ console.log(fee);
 // }
 
 // --------------------------------------
-// Section 5: Switch Statement
+// Section 6: Switch Statement
 // --------------------------------------
 
 const fruit = "Kiwi";
@@ -116,7 +116,7 @@ switch (fruit) {
 }
 
 // --------------------------------------
-// Section 6: Truthy and Falsey Values
+// Section 7: Truthy and Falsey Values
 // --------------------------------------
 
 // In JavaScript, some values are automatically considered "truthy" (true) or "falsey" (false) when used in conditions.
