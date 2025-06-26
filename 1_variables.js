@@ -29,7 +29,7 @@ console.log("hello world");
 // this is when we write the first word's letter in lowercase and subsequent first letters of words in upper case. it's used for naming variables in JavaScript.
 
 //String (text)
-let exampleText = "my text";
+const exampleText = "my text";
 console.log(exampleText);
 
 // Integer (number)
@@ -37,8 +37,8 @@ const myNum = 5;
 console.log(myNum);
 
 // Boolean (true or false)
-booleanOne = true;
-booleanTwo = false;
+const booleanOne = true;
+const booleanTwo = false;
 
 console.log(booleanOne);
 console.log(booleanTwo);

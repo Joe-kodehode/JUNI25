@@ -1,157 +1,142 @@
-// Lesson 2: Conditionals and Related Operators in JavaScript
+// Lesson 3: Recap of JavaScript Basics with New Examples
 
-// --------------------------------------
-// Section 1: The typeof Operator
-// --------------------------------------
+// ------------------------------
+// Section 1: Variables, Data Types, and Operators
+// ------------------------------
 
-const myVariable = [1, 2, 3];
+// Scenario: An online store managing product details.
 
-console.log(typeof myVariable);
+const storeName = "Tech Haven"; // String
+const productName = "Wireless Earbuds"; // String
+let productPrice = 75; // Number (Integer)
+let productQuantity = 15; // Integer
+let isInStock = true; // Boolean
+let productTags = ["audio", "wireless", "accessory"]; // Array
+let discount; // Undefined
 
-// --------------------------------------
-// Section 2: Comparison Operators
-// --------------------------------------
+discount = true;
 
-console.log(15 > 20); // Greater than (>) operator
-console.log(15 < 20); // Less than (<) operator
-console.log(15 >= 15); // Greater than or equal to (>=) operator
-console.log(20 <= 20); // Less than or equal to(<=)
+// Console.log to display variable values
+console.log(storeName);
+console.log(productName);
+console.log(productPrice);
+console.log(productQuantity);
+console.log(isInStock);
+console.log(productTags);
+console.log(discount);
 
-// The equality (==) operator checks if values are equal (with type conversion):
-console.log(15 == "15"); // true due to type coercion
+console.log(productTags[2]);
 
-// Strict equality (===) operator checks for both value and type:
-console.log(15 === "15"); // false, because the types differ (number vs string)
+// Calculate the total cost for the available quantity.
 
-console.log(15 != 20); // Not equal (!=) operator
-console.log(15 != "15");
+productQuantity++;
 
-console.log(15 !== "15"); // Strict not equal (!==) operator
+const totalValue = productPrice * productQuantity;
 
-// --------------------------------------
-// Section 3: Conditionals with if, if...else, if...else if...else
-// --------------------------------------
+console.log(totalValue);
 
-// Basic "if statement"
+// Compound assignment: Increase the product price by 10.
 
-let temperature = -5;
+productPrice += 10;
+console.log(productPrice);
 
-if (temperature >= 20) {
-  console.log("It's a hot day!!");
-} else if (temperature >= 10) {
-  console.log("It's a mid day");
-} else if (temperature > 0) {
-  console.log("It's a cold day");
+// productPrice = productPrice + 10
+
+// Increment and decrement operators:
+// Increase the quantity by 1.
+
+productQuantity++;
+productQuantity--;
+console.log(productQuantity);
+
+// Using the modulus operator:
+// Find the remainder when total value is divided by 50.
+
+console.log(totalValue);
+
+const remainder = totalValue % 50;
+console.log(remainder);
+
+// ------------------------------
+// Section 2: Conditionals and Logical Operators
+// ------------------------------
+
+// Example: Decide promotion messages based on total basket ammount.
+
+const totalBasket = 400;
+
+if (totalBasket >= 350) {
+  console.log("You qualify for free delivery!");
+} else if (totalBasket >= 300) {
+  console.log("You're close to free delivery, spend 350 or more to qualify!");
 } else {
-  console.log("It's freezing!!");
+  console.log("Free delivery with orders of 350 or more.");
 }
 
-// --------------------------------------
-// Section 4: Logical Operators: AND (&&) and OR (||)
-// --------------------------------------
+// Logical operators: Using AND (&&) and OR (||)
+// Scenario: Show a special message if the product is in stock and either it's on sale or the quantity is high.
+// isInStock  is set to true
+// discount   is set to true
+// productQuantity is more than 20
 
-// AND (&&) requires both conditions to be true.
+if (isInStock && (discount || productQuantity > 20)) {
+  console.log("Congratulations, you are eligible for a special offer");
+}
 
-const age = 18;
-const hasLicence = true;
-const disqualified = false;
+// Ternary operator: Determine shipping cost based on total cost.
 
-if (age >= 18 && hasLicence && !disqualified) {
-  console.log("You can drive");
+// if their totalBasket is over 350 they get free shipping, otherwise it's a 15 fee
+const shippingCost = totalBasket >= 350 ? "free shipping" : "15 delivery fee";
+
+console.log(shippingCost);
+
+// ------------------------------
+// Section 3: typeof Operator and Truthy/Falsey Values
+// ------------------------------
+
+// Using the typeof operator to check data types:
+console.log(typeof storeName);
+console.log(typeof productPrice);
+console.log(typeof isInStock);
+console.log(typeof productTags);
+
+// Example with an empty string (falsey)
+const emptyStr = "";
+if (emptyStr) {
+  console.log("Empty string is truthy.");
 } else {
-  console.log("You can't drive, sorry!");
+  console.log("An empty string is falsey.");
 }
 
-// OR (||) requires at least one condition to be true.
-
-const day = "Saturday";
-
-if (day === "Saturday" || day === "Sunday") {
-  console.log("It's the weekend, yipee!");
-} else if (
-  day === "Monday" ||
-  day === "Tuesday" ||
-  day === "Wednesday" ||
-  day === "Thursday" ||
-  day === "Friday"
-) {
-  console.log("It's a weekday");
+// Example with a non-empty string (truthy)
+const greeting = "Welcome!";
+if (greeting) {
+  console.log("Greeting detected");
 } else {
-  console.log("Please enter a day of the week.");
+  console.log("No greeting detected");
 }
 
-// --------------------------------------
-// Section 5: Ternary Operator
-// --------------------------------------
-
-// DRY - Don't repeat yourself
-
-const isMember = true;
-
-const fee = `Your fee is: £${isMember ? "5" : "10"}`;
-
-console.log(fee);
-
-// if (isMember === true) {
-//   console.log("You pay $5");
-// } else {
-//   console.log("You pay $10");
-// }
-
-// --------------------------------------
-// Section 6: Switch Statement
-// --------------------------------------
-
-const fruit = "Kiwi";
-
-switch (fruit) {
-  case "Apple":
-    console.log("Apples are delicious!");
-    break;
-  case "Banana":
-    console.log("Bananas are a great source of energy");
-    break;
-  default:
-    console.log("Unknown fruit detected");
-}
-
-// --------------------------------------
-// Section 7: Truthy and Falsey Values
-// --------------------------------------
-
-// In JavaScript, some values are automatically considered "truthy" (true) or "falsey" (false) when used in conditions.
-
-let test = {
-  name: "Joe",
-};
-
-if (test) {
-  console.log("is true");
+// Example with the number 0 (falsey)
+const zeroValue = 0;
+if (zeroValue) {
+  console.log("0 is truthy.");
 } else {
-  console.log("is false");
+  console.log("0 is falsey.");
 }
 
-// String with contents is true
-// Positive integer is true
-// Negative integer is true
-// Object with values is true
-// Array with contents is true
-// Object without value is true
-// Empty array is true
+// --------------------------------------------------
+// Section 4: Template Literals Recap
+//---------------------------------------------------
 
-// Undefined variable is false
-// Null is false
-// Zero is false
-// Empty string is false
+// const welcomeMessage =
+//   "Welcome to" +
+//   " " +
+//   storeName +
+//   " " +
+//   "we hope you enjoy your stay, our current offer is on" +
+//   " " +
+//   productName;
 
-// --------------------------------------
-// Section 6: Template literal // Template String
-// --------------------------------------
+const welcomeMessage = `Welcome to ${storeName}, we hope you enjoy your stay, our current offer is on ${productName}`;
 
-const firstName = "Ola";
-const lastName = "Nordmann";
-
-const fullName = `Your full name is: ${firstName} ${lastName}`;
-// const fullName = firstName + " " + lastName;
-
-console.log(fullName);
+console.log(welcomeMessage);
