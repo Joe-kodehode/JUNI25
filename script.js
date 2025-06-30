@@ -82,6 +82,106 @@ const greeter = (time, name) => {
   return `Good ${time} ${name}`;
 };
 
-console.log(greeter("Morning", "Joe"));
-console.log(greeter("Evening", "Ole"));
-console.log(greeter("Afternoon", "Bill"));
+const userData = {
+  userName: "Joe",
+  address: "123 wherever",
+  tel: 49348349,
+};
+
+// console.log(userData["userName"]);
+// console.log(userData.userName);
+console.log(greeter("Morning", userData.userName));
+
+// ---------------------------------------------------
+// Section 5: Implicit Return in Arrow Functions
+// ---------------------------------------------------
+
+// const adder = (num1, num2) => {
+//  const myVariable = "123"
+//   return num1 + num2;
+// };
+
+const adder = (num1, num2) => num1 + num2;
+
+console.log(adder(10, 5));
+
+// ---------------------------------------------------
+// Section 6: Calculator Function Using Switch Statement
+// ---------------------------------------------------
+
+function calculator(num1, num2, operator) {
+  switch (operator) {
+    case "+":
+      return num1 + num2;
+    case "-":
+      return num1 - num2;
+    case "*":
+      return num1 * num2;
+    case "/":
+      return num1 / num2;
+
+    default:
+      return "Invalid operator";
+  }
+}
+
+console.log(calculator(10, 2, "%"));
+console.log(calculator(10, 2, "+"));
+console.log(calculator(10, 2, "-"));
+console.log(calculator(10, 2, "*"));
+console.log(calculator(10, 0, "/"));
+
+// ---------------------------------------------------
+// Section 7: Updating a Global Variable via a Function
+// ---------------------------------------------------
+
+// Example 1
+let hp = 100;
+
+const updateHp = (amount, direction) => {
+  if (direction === "down") {
+    hp -= amount;
+  } else if (direction === "up") {
+    hp += amount;
+  }
+};
+
+updateHp(50, "down");
+console.log(hp);
+
+updateHp(25, "up");
+console.log(hp);
+
+//Example 2
+const newArray = [];
+
+function updateArray(data) {
+  newArray.push(data);
+}
+
+updateArray(1);
+updateArray(6);
+updateArray(3);
+updateArray(9);
+console.log(newArray);
+
+// ---------------------------------------------------
+// Section 8: Using Template Literals and Ternary Operator in a Function
+// ---------------------------------------------------
+
+const fruits = ["Banana", "Apple", "Pear", "Kiwi"];
+
+const drinks = ["coke", "water", "milk", "orange juice"];
+
+//Code without implicit return
+// const checkItem = (item, array) => {
+//   return `The array ${
+//     array.includes(item) ? "does" : "doesn't"
+//   } include ${item}`;
+// };
+
+//Code with implicit return (no return or curly brackets as its all on one line)
+const checkItem = (item, array) =>
+  `The array ${array.includes(item) ? "does" : "doesn't"} include ${item}`;
+
+console.log(checkItem("sprite", drinks));
