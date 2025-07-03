@@ -1,146 +1,129 @@
-// Lesson 5: JavaScript Methods (Strings, Arrays, and Numbers)
-
-// A method in JavaScript is a built-in function that you use with a specific type of data, like strings or arrays. It lets you do something with that data—like change it, check it, copy or access part of it.
-
 // --------------------------------------
-// Section 1: String Methods
+// Section 1: Check if a list includes an item (function, ternary, array)
 // --------------------------------------
 
-const text = "     Hello, JavaScript World World!     ";
+const shoppingList = ["milk", "bread", "cheese"];
+const gamesList = ["mario kart", "GTA6", "hello kitty island adventure"];
 
-const trimmedText = text.trim(); // removes whitespace from both ends of the string
+const checkItem = (item, itemArray) =>
+  `The array does${itemArray.includes(item) ? "" : "n't"} include ${item}`;
 
-console.log(trimmedText.toUpperCase()); // converts the entire string to uppercase
-
-console.log(trimmedText.toLowerCase()); // converts the entire string to lowercase
-
-console.log(trimmedText.indexOf("World")); // returns the starting index of "JavaScript" in the string (only the first occourence)
-
-const slicedText = trimmedText.slice(7, 17); // extracts characters from index 7 to 17, doesn't alter the original.
-console.log(slicedText);
-console.log(trimmedText);
-
-console.log(trimmedText.replace("World", "Universe")); // replaces the first occurrence of "World" with "Universe"
-
-console.log(trimmedText.replaceAll("World", "Universe")); // replaces all occurrences of "World" with "Universe"
-
-console.log(trimmedText.charCodeAt(0)); // returns the Unicode value of the character at index 0
-
-console.log(trimmedText.length); // returns the length of the string
-
-console.log(trimmedText.split(" ")); // splits the string into an array of substrings by spaces
-
-console.log(trimmedText.repeat(3)); // repeats the string 3 times
+console.log(checkItem("dogfood", shoppingList));
+console.log(checkItem("milk", shoppingList));
+console.log(checkItem("mario kart", gamesList));
+console.log(checkItem("warframe", gamesList));
+console.log(checkItem("sims", gamesList));
 
 // --------------------------------------
-// Section 1.2: Converting a String to a Number
+// Section 2: Convert a Sentence into Kebab Case (function, methods)
 // --------------------------------------
 
-const numericString = "123.45xyz";
+function toKebabCase(string) {
+  //   return string.trim().replaceAll(" ", "-");
+  return string.trim().split(" ").join("-");
+}
 
-console.log(Number(numericString)); // converts entire string to a number; returns NaN if any part is invalid
+console.log(toKebabCase("  hello javascript how are you     "));
 
-console.log(parseInt(numericString)); // parses as an integer until an invalid character; returns 123
-
-console.log(parseFloat(numericString)); // parses as a float until an invalid character; returns 123.45
-
-// --------------------------------------
-// Section 2: Array Methods
-// --------------------------------------
-
-const colors = ["Red", "Green", "Blue"];
-console.log(colors.length); // returns the number of elements in the array
-
-colors.push("Yellow"); // adds "Yellow" to the end of the array
-console.log(colors);
-
-const lastColor = colors.pop(); // removes and returns the last element in the array
-console.log(lastColor);
-console.log(colors);
-
-console.log(colors.join(" ")); // joins array elements into a string separated by " "
-
-console.log(colors.includes("Green")); // checks if "Green" is in the array; returns true or false
-
-console.log(colors.shift()); // removes and returns the first element in the array
-
-colors.unshift("Purple"); // adds "Purple" at the beginning of the array
-console.log(colors);
-
-const newColors = colors.toSpliced(1, 1, "Orange");
-
-console.log(colors); // logs the original array (unchanged)
-console.log(newColors); // logs the new array with the spliced changes
-
-const unsortedArray = [3, 1, 4, 1, 5, 9];
-
-const sortedArray = unsortedArray.toSorted(); // returns a new sorted array without modifying the original
-
-console.log(unsortedArray); // logs the original unsorted array
-console.log(sortedArray); // logs the new sorted array
-
-const unsortedStringArray = ["c", "a", "b"];
-
-const sortedStringArray = unsortedStringArray.toSorted().toReversed();
-console.log(sortedStringArray);
-
-console.log(sortedArray.at(0)); // accesses the first element using a positive index
-console.log(sortedArray.at(-1)); // accesses the last element using a negative index
-
-const reversedArray = sortedArray.toReversed(); // returns a new array with elements in reverse order
-
-console.log(reversedArray); // logs the reversed array
+// result:  "hello-javascript-how-are-you"
 
 // --------------------------------------
-// Section 3: Number Methods
+// Section 3: Checking if a word is a palindrome (function, conditional, methods)
 // --------------------------------------
 
-let myNum = 5.949359;
+function isPalindrome(word) {
+  const reversedWord = word.toLowerCase().split("").toReversed().join("");
+  return `${word} is ${
+    word.toLowerCase() === reversedWord ? "" : "not"
+  } a palindrome`;
+}
 
-console.log(myNum.toFixed(2)); // returns a string representing myNum rounded to 2 decimal places
+console.log(isPalindrome("Racecar")); // racecar is a palindrome
+console.log(isPalindrome("Banana")); // banana is not a palindrome
 
-console.log(myNum.toString()); // converts myNum to a string
+// Break until 13:15
 
-console.log(myNum.toExponential()); // returns a string with myNum in exponential notation
+// How can we return a fully lowercase word but with an uppercase first letter?
+
+function uppercaseFirstLetter(word) {
+  const trimmedWord = word.trim();
+  return (
+    trimmedWord.charAt(0).toUpperCase() + trimmedWord.slice(1).toLowerCase()
+  );
+}
+
+console.log(uppercaseFirstLetter("smoothie")); // Smoothie
+console.log(uppercaseFirstLetter("    buIlDinG    ")); // Building
 
 // --------------------------------------
-// Section 4: Chaining Methods Together
+// Section 4: Introduction to Math.random
+// --------------------------------------
+const pokemon = [
+  "pikachu",
+  "diglett",
+  "electrode",
+  "machop",
+  "magikarp",
+  "blastoise",
+  "vaporeon",
+  "psyduck",
+];
+
+// Math.random() is a built-in JavaScript method that gives you a random number between 0 (inclusive) and 1 (exclusive).
+// 0.0000000000000000 - 0.9999999999999999
+
+console.log(Math.random());
+
+// 0-9
+
+const randomNumber = Math.floor(Math.random() * pokemon.length);
+console.log(randomNumber);
+
+// If you want a number between 1-10, simply add "+1"
+const randomOneToTen = Math.floor(Math.random() * 10) + 1;
+console.log(randomOneToTen);
+
+console.log(`Your starter pokemon is: ${pokemon[randomNumber]}`);
+
+// --------------------------------------
+// Section 5: Remove the Middle Element from an Array (function, methods, Math.floor)
 // --------------------------------------
 
-// Example 1: Chaining string methods
+const myArray = ["A", "B", "C", "D", "E"];
 
-const rawString = "    JavaScript is FUN!     ";
+function removeMiddle(array) {
+  const mid = Math.floor(array.length / 2);
+  const copy = array.toSpliced(mid, 1);
+  return copy;
+}
 
-const processedString = rawString
-  .trim()
-  .replace("FUN", "AWESOME")
-  .toLowerCase();
+console.log(removeMiddle(myArray));
+console.log(removeMiddle(pokemon));
 
-console.log(processedString);
+// --------------------------------------
+// Section 6: Rock, paper scissors (function, switch case, Math.random)
+// --------------------------------------
 
-// Example 2: Chaining Array and String methods
+function rockPaperScissors(userInput, aiInput) {
+  switch (userInput + aiInput) {
+    case "rock" + "rock":
+    case "paper" + "paper":
+    case "scissors" + "scissors":
+      return "It's a draw!";
+    case "rock" + "scissors":
+    case "scissors" + "paper":
+    case "paper" + "rock":
+      return "User wins!";
+    default:
+      return "AI Wins!";
+  }
+}
 
-const words = ["Hello", "World"];
-const stringFromArray = words.join(" ").toUpperCase();
+const possibleAnswers = ["rock", "paper", "scissors"];
 
-console.log(stringFromArray);
+// const randomNum = Math.floor(Math.random() * 3);
+const randomNum = Math.floor(Math.random() * possibleAnswers.length);
 
-// Example 3: Chaining Number and String methods
+const aiAnswer = possibleAnswers[randomNum];
 
-const chainedNum = myNum.toFixed(2).toString().repeat(2);
-
-console.log(chainedNum);
-
-// JSON - JavaScript Object Notation
-
-// prettier-ignore
-const jsonExample = `{
-    "employees":[
-  { "firstName":"John", "lastName":"Doe" },
-  { "firstName":"Anna", "lastName":"Smith" },
-  { "firstName":"Peter", "lastName":"Jones" }
-]}`
-
-const parsedJson = JSON.parse(jsonExample);
-
-console.log(parsedJson);
+console.log(rockPaperScissors("rock", aiAnswer));
