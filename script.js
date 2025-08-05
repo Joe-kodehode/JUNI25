@@ -43,3 +43,23 @@ const fruits = [
     origin: "Costa Rica",
   },
 ];
+
+// Create a container to hold fruit cards
+
+const container = document.createElement("div");
+container.classList.add("fruit-catalog");
+document.body.append(container);
+
+// Create a loop to loop through the fruits array and create a card for each fruit element
+
+for (fruit of fruits) {
+  const card = document.createElement("div");
+  card.classList.add("fruit-card");
+
+  const title = document.createElement("h2");
+  title.textContent = fruit.name;
+
+  card.append(title);
+
+  container.append(card);
+}
