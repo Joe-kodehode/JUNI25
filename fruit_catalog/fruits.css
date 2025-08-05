@@ -57,3 +57,12 @@ h1 {
   margin: 6px 0;
   color: #555;
 }
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+.sale {
+  color: red;
+  font-size: 24px;
+}

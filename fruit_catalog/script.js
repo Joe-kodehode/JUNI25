@@ -56,10 +56,42 @@ for (fruit of fruits) {
   const card = document.createElement("div");
   card.classList.add("fruit-card");
 
+  //creating a new h2 for the title
   const title = document.createElement("h2");
   title.textContent = fruit.name;
 
-  card.append(title);
+  //creating a new image
+  const image = document.createElement("img");
+  image.src = `images/${fruit.name}.jpg`;
+  image.classList.add("fruit-image");
 
+  //creating p tag for fruit info
+  const info = document.createElement("p");
+  info.textContent = `color: ${fruit.color}, origin: ${fruit.origin}`;
+
+  //adding nutritional info
+  const nutrition = document.createElement("p");
+  nutrition.textContent = `Calories: ${fruit.calories} per 100g`;
+
+  //adding price per kg
+  const price = document.createElement("p");
+  price.textContent = `Price per kg: $${fruit.pricePerKg}`;
+
+  //appending everything to the card
+  card.append(title, image, info, nutrition, price);
+
+  fruit.sale = Math.random() < 0.5;
+
+  if (fruit.sale) {
+    price.classList.add("strikethrough");
+
+    const salePrice = document.createElement("p");
+    salePrice.textContent = `Sale price: $${fruit.pricePerKg * 0.9} per kg.`;
+    salePrice.classList.add("sale");
+
+    card.append(salePrice);
+  }
+
+  //appending card to the container
   container.append(card);
 }
