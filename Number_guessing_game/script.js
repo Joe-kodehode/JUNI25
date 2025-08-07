@@ -24,8 +24,12 @@ function initGame() {
   guessInput.disabled = false;
   guessButton.disabled = false;
 
+  restartButton.style.display = "none";
+
   guessInput.value = "";
 }
+
+// stretch goal: run checkGuess function when hitting enter key as well as when clicking guess button
 
 function checkGuess() {
   const userGuess = Number(guessInput.value);
@@ -41,6 +45,14 @@ function checkGuess() {
 
   //update the totalGuesses paragraph to be one less
   guessesLeft.textContent = `Guesses left: ${totalGuesses}`;
+
+  //Update the feedback paragraph to say either "Too high" "Too low" "You're close!" (if within 5)
+  if (Math.abs(userGuess - randomNumber) <= 5) {
+    feedback.textContent = "You are getting quite close!";
+  } else {
+    feedback.textContent =
+      userGuess < randomNumber ? "Guess is too low!" : "Guess is too high!";
+  }
 
   //check if user guessed correctly
   if (userGuess === randomNumber) {
